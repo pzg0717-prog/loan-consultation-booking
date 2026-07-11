@@ -3,7 +3,7 @@ const timeInput = document.querySelector('#booking-time');
 const slots = [...document.querySelectorAll('.slot')];
 const form = document.querySelector('#booking-form');
 const dialog = document.querySelector('#confirmation');
-const bookingEndpoint = 'https://script.google.com/macros/s/AKfycbyc_Isdy6hiL3UfyAPDENxNiM7pZxdKy4trBJzLT2ZB0G2xR2NFJY5XzYYajN5YHcGp8A/exec';
+const bookingEndpoint = 'https://docs.google.com/forms/d/e/1FAIpQLSe4y1dAJPZsEPno9gFnOcYpep_Q5RLltOkigkAVZaipKdG46Q/formResponse';
 const storageFrame = document.createElement('iframe');
 
 storageFrame.name = 'booking-storage-frame';
@@ -26,12 +26,14 @@ form.addEventListener('submit', (event) => {
   if (!timeInput.value) { alert('상담 시간을 선택해 주세요.'); return; }
   const type = document.querySelector('input[name="type"]:checked').value;
   const booking = new URLSearchParams({
-    type,
-    date: dateInput.value,
-    time: timeInput.value,
-    name: document.querySelector('#name').value.trim(),
-    phone: document.querySelector('#phone').value.trim(),
-    note: document.querySelector('#note').value.trim(),
+    'entry.1254580268': [
+      `상담 종류: ${type}`,
+      `희망 날짜: ${dateInput.value}`,
+      `희망 시간: ${timeInput.value}`,
+      `이름: ${document.querySelector('#name').value.trim()}`,
+      `휴대폰 번호: ${document.querySelector('#phone').value.trim()}`,
+      `남길 말씀: ${document.querySelector('#note').value.trim() || '-'}`,
+    ].join('\n'),
   });
 
   const sender = document.createElement('form');
