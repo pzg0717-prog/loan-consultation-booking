@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>모아 상담 예약</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="phone-shell">
+      <header class="topbar">
+        <div class="brand-mark">M</div>
+        <div>
+          <p class="eyebrow">MOA FINANCE</p>
+          <h1>대출 상담 예약</h1>
+        </div>
+        <button class="help" type="button" aria-label="도움말">?</button>
+      </header>
+
+      <section class="hero">
+        <p>복잡한 대출, 상담사가 함께 정리해 드려요.</p>
+        <strong>평일 09:00–18:00 · 무료 상담</strong>
+      </section>
+
+      <form id="booking-form">
+        <section class="card">
+          <div class="section-title"><span>1</span><div><h2>상담 종류</h2><p>필요한 상담을 골라주세요.</p></div></div>
+          <div class="choice-grid" id="consultation-types">
+            <label class="choice"><input type="radio" name="type" value="주택담보대출" checked /><span>🏠</span>주택담보</label>
+            <label class="choice"><input type="radio" name="type" value="신용대출" /><span>💳</span>신용대출</label>
+            <label class="choice"><input type="radio" name="type" value="전세·월세대출" /><span>🔑</span>전세·월세</label>
+            <label class="choice"><input type="radio" name="type" value="기타 상담" /><span>💬</span>기타 상담</label>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-title"><span>2</span><div><h2>희망 날짜와 시간</h2><p>원하는 시간을 선택하세요.</p></div></div>
+          <label class="date-label" for="booking-date">날짜 <input id="booking-date" type="date" required /></label>
+          <div class="time-slots" role="group" aria-label="상담 시간">
+            <button type="button" class="slot" data-time="10:00">10:00</button>
+            <button type="button" class="slot" data-time="11:00">11:00</button>
+            <button type="button" class="slot" data-time="14:00">14:00</button>
+            <button type="button" class="slot" data-time="15:00">15:00</button>
+            <button type="button" class="slot" data-time="16:00">16:00</button>
+            <button type="button" class="slot" data-time="17:00">17:00</button>
+          </div>
+          <input id="booking-time" type="hidden" required />
+        </section>
+
+        <section class="card">
+          <div class="section-title"><span>3</span><div><h2>연락처</h2><p>예약 확인에만 사용합니다.</p></div></div>
+          <label>이름<input id="name" type="text" placeholder="홍길동" autocomplete="name" required /></label>
+          <label>휴대폰 번호<input id="phone" type="tel" placeholder="010-1234-5678" autocomplete="tel" required /></label>
+          <label>남길 말씀 <textarea id="note" rows="3" placeholder="상담받고 싶은 내용을 간단히 적어주세요."></textarea></label>
+          <label class="agree"><input id="consent" type="checkbox" required /><span>개인정보 수집 및 상담 연락에 동의합니다.</span></label>
+        </section>
+
+        <p class="notice">이 화면은 상담 예약용 데모입니다. 대출 승인·금리·한도는 상담 후 금융기관의 심사를 통해 결정됩니다.</p>
+        <button class="submit" type="submit">상담 예약하기</button>
+      </form>
+    </main>
+
+    <dialog id="confirmation">
+      <div class="success-icon">✓</div>
+      <p class="eyebrow">예약 접수 완료</p>
+      <h2>상담 예약이 접수됐어요</h2>
+      <p id="summary"></p>
+      <button id="close-dialog" type="button">확인</button>
+    </dialog>
+    <script src="app.js"></script>
+  </body>
+</html>
