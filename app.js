@@ -49,7 +49,7 @@ form.addEventListener('submit', (event) => {
   });
   document.body.append(sender);
   sender.submit();
-  sender.remove();
+  window.setTimeout(() => sender.remove(), 1500);
 
   const date = new Intl.DateTimeFormat('ko-KR', { month:'long', day:'numeric', weekday:'short' }).format(new Date(`${dateInput.value}T00:00:00`));
   document.querySelector('#summary').textContent = `${type} · ${date} ${timeInput.value}에 상담을 요청했습니다. 담당자가 연락드릴게요.`;
